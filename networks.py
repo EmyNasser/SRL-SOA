@@ -19,13 +19,11 @@ def SLRol(n_bands, q):
     model = Model(inputs=input, outputs=y)
     return model
 # In networks.py or utils.py
-def SpaBS(s_bands):
-    # Dummy model or operation
-    import tensorflow as tf
+def SpaBS(s_bands, input_dim):
     from tensorflow.keras import layers, models
 
     model = models.Sequential([
-        layers.Input(shape=(s_bands,)),
+        layers.Input(shape=(input_dim,)),
         layers.Dense(32, activation='relu'),
         layers.Dense(s_bands, activation='softmax')
     ])

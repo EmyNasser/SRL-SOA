@@ -154,7 +154,7 @@ def reduce_bands(param, classData, Data, i):
 
     elif modelType == 'SpaBS':
         
-        model = SpaBS(s_bands)
+        model = SpaBS(s_bands, input_dim=xx.shape[1])
         x_temp = model.predict(xx)
 
         a = xx[0, :]

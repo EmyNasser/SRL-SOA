@@ -112,7 +112,7 @@ def reduce_bands(param, classData, Data, i):
     else: xx = np.concatenate([classData['x_train'], Data['scd']], axis = 0)
 
     if modelType == 'SRL-SOA':
-        weightsDir = 'weights/' + dataset + '/'
+        weightsDir = 'weights/kaggle/working/SRL-SOA/weights/' + dataset + '/'
         if not os.path.exists(weightsDir): os.makedirs(weightsDir)
         weightName = weightsDir + modelType + '_q' + str(q) + '_run' + str(i) + '.h5'
         model = networks.SLRol(n_bands = n_bands, q = q)

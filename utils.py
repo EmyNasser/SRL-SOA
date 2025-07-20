@@ -129,6 +129,8 @@ def reduce_bands(param, classData, Data, i):
                     callbacks=callbacks_osen, shuffle=True,
                     validation_data=(xx, xx), epochs = epochs)
             print(modelType + ' is trained!')
+        os.makedirs(os.path.dirname(weightName), exist_ok=True)
+
         model.load_weights(weightName)
 
         intermediate_layer_model = tf.keras.Model(inputs = model.input,

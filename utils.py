@@ -115,7 +115,7 @@ def reduce_bands(param, classData, Data, i):
         weightsDir = '/kaggle/working/SRL-SOA/weights/' + dataset + '/'
         if not os.path.exists(weightsDir): os.makedirs(weightsDir)
         # ...existing code...
-        weightName = weightsDir + modelType + '_q' + str(q) + '_run' + str(i) + '.h5'
+        weightName = weightsDir + modelType + '_q' + str(q) + '_run' + str(i) + '.weights.h5'
         model = networks.SLRol(n_bands = n_bands, q = q)
 
         checkpoint_osen = tf.keras.callbacks.ModelCheckpoint(

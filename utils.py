@@ -19,7 +19,7 @@ np.random.seed(10)
 tf.random.set_seed(10)
 
 def loadData(dataset):
-    Data = scipy.io.loadmat('/kaggle/input/indian-pines/ip/' + dataset + '.mat')
+    Data = scipy.io.loadmat('/kaggle/input/' + dataset + '.mat')
     if 'Indian' in dataset: Gtd = scipy.io.loadmat('/kaggle/input/indian-pines/ip/' + 'indian_pines_gt.mat')
     elif 'SalinasA' in dataset: Gtd = scipy.io.loadmat('/kaggle/input/salinas-a/SalinasA/' + 'SalinasA_gt.mat')
     else: Gtd = scipy.io.loadmat('/kaggle/input/salinas-a/SalinasA/' + dataset + '_gt.mat')

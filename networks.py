@@ -5,19 +5,16 @@ from layers import Oper1D
 
 np.random.seed(10)
 tf.random.set_seed(10)
+from tensorflow.keras.layers import Input, Lambda
+from tensorflow.keras.models import Model
+import tensorflow as tf
 
-### SLR-OL
 def SLRol(n_bands, q):
-  input = tf.keras.Input((n_bands, 1), name='input')
-  x_0 = Oper1D(n_bands, 3, activation = 'tanh', q = q)(input)
-  y = tf.matmul(x_0, input)
+    input = Input(shape=(n_bands,))
+    x_0 = tf.Variable(tf.random.normal((n_bands, q)), trainable=True)
 
-  model = tf.keras.models.Model(input, y, name='OSEN')
+    # Wrap tf.matmul in a Lambda layer
+    y = Lambda(lambda x: tf.matmul(x, x_0))(input)
 
-  optimizer = tf.keras.optimizers.Adam(lr=0.001)
-
-  model.compile(optimizer = optimizer, loss = 'mse')
-
-  model.summary()
-
-  return model
+    model = Model(inputs=input, outputs=y)
+    return model

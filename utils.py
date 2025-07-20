@@ -6,6 +6,7 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import confusion_matrix, balanced_accuracy_score, cohen_kappa_score
 from sklearn.decomposition import PCA
+from networks import SpaBS
 
 import networks
 try:
@@ -152,6 +153,7 @@ def reduce_bands(param, classData, Data, i):
         classData['x_test'] = pca.transform(classData['x_test'])
 
     elif modelType == 'SpaBS':
+        
         model = SpaBS(s_bands)
         x_temp = model.predict(xx)
 

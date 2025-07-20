@@ -36,7 +36,8 @@ def loadData(dataset):
     gtd = np.array(gtd, dtype = 'float32')
 
     xx = np.reshape(image, [image.shape[0] * image.shape[1], image.shape[2]])
-
+    s= [156, 154, 147, 157, 172, 159, 168, 171, 152, 160, 158, 155, 163, 161, 146, 189, 170, 148, 153, 191, 162, 186, 173, 149, 165, 187, 166, 169, 164, 193, 150, 145, 190, 106, 184, 185, 188, 176, 167, 151, 196, 192, 183, 177, 174, 109, 197, 195, 28, 179, 178, 180, 2, 182, 18, 108, 72, 73, 8, 194, 14, 175, 20, 110, 107, 98, 6, 27, 61, 19, 80, 33, 97, 100, 99]
+    xx = xx[:,s]
     # Classification data.
     label = np.reshape(gtd, [gtd.shape[0] * gtd.shape[1]])
 
@@ -184,7 +185,7 @@ def reduce_bands(param, classData, Data, i):
 
         classData['x_train'] = classData['x_train'][:, ind_a]
         classData['x_test'] = classData['x_test'][:, ind_a]
-
+    
     else: print('Selected method is not supported.')
 
     print('Selected number of bands: ', str(classData['x_train'].shape[-1]))
